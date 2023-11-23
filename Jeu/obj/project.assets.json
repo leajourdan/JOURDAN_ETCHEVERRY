@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\leajo\\.nuget\\packages\\": {}
+    "C:\\Users\\maxim\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leajo\\OneDrive\\Documents\\INFORMATIQUE\\Projet-info\\Jeu\\Jeu.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\Jeu\\Jeu.csproj",
       "projectName": "Jeu",
-      "projectPath": "C:\\Users\\leajo\\OneDrive\\Documents\\INFORMATIQUE\\Projet-info\\Jeu\\Jeu.csproj",
-      "packagesPath": "C:\\Users\\leajo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leajo\\OneDrive\\Documents\\INFORMATIQUE\\Projet-info\\Jeu\\obj\\",
+      "projectPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\Jeu\\Jeu.csproj",
+      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\Jeu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\leajo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
