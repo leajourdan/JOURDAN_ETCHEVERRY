@@ -51,4 +51,4 @@ int [][] ApresTour(int[][] tableauJeu){
     tableauJeu[indice][nb]=1;
     return tableauJeu;
 }
-  
+coucou
