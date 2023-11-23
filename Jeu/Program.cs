@@ -51,15 +51,4 @@ int [][] ApresTour(int[][] tableauJeu){
     tableauJeu[indice][nb]=1;
     return tableauJeu;
 }
-static void AfficherTableauDeTableaux(int[][] tableau)
-    {
-        foreach (var row in tableau)
-        {
-            foreach (var element in row)
-            {
-                Console.Write(element + " ");
-            }
-            Console.WriteLine();
-        }
-    }
-AfficherTableauDeTableaux(ApresTour(tableauDeTableaux));
+  

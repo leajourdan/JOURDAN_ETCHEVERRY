@@ -13,6 +13,7 @@ C:\Users\maxim\OneDrive\Bureau\Cours\ENSC\INFO\Projet\Projet-info\Jeu\obj\Debug\
 C:\Users\maxim\OneDrive\Bureau\Cours\ENSC\INFO\Projet\Projet-info\Jeu\obj\Debug\net6.0\Jeu.pdb
 C:\Users\maxim\OneDrive\Bureau\Cours\ENSC\INFO\Projet\Projet-info\Jeu\obj\Debug\net6.0\Jeu.genruntimeconfig.cache
 C:\Users\maxim\OneDrive\Bureau\Cours\ENSC\INFO\Projet\Projet-info\Jeu\obj\Debug\net6.0\ref\Jeu.dll
+<<<<<<< HEAD
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.csproj.AssemblyReference.cache
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.AssemblyInfoInputs.cache
@@ -21,3 +22,5 @@ C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.dll
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\refint\Jeu.dll
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.pdb
+=======
+>>>>>>> f11abea4c521373819db6cf258c9448b7cd1bdc5
