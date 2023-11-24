@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
 
-int CountZeros(int[] tableau)
+int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
 {
     int count = 0;
     foreach (int element  in tableau)
     {
-
         if (element == 0)
         {
             count++;
@@ -13,13 +12,14 @@ int CountZeros(int[] tableau)
     }
     return count;
 }
-int Lignes(int [][] tableauJeu){
-    int n= tableauJeu.Length;
+
+int Lignes(int [][] tableauJeu){ //fonction trouvant une ligne au hasard contenant au moins 1 case vide 
+    int n= tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
     Random indice= new Random();
-    int trouve=0;
-    int k=0;
+    int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue du chercher
+    int k=0; //
     while (trouve==0 & k<n){
-        int a=indice.Next(0,n);
+        int a=indice.Next(0,n); // a est une nombre choisi aléatoirement entre 0 et n-1
         if(CountZeros(tableauJeu[a])!=0){
             trouve=1;
             return a;
@@ -33,8 +33,8 @@ int Lignes(int [][] tableauJeu){
     return -1;     
 }   
 
-int [][] ApresTour(int[][] tableauJeu){
-    int indice=Lignes(tableauJeu);
+int [][] ApresTour(int[][] tableauJeu){ // fonction rajoutant 1 bonbon dans une case aléatoire vide
+    int indice=Lignes(tableauJeu); // on a deja choisi sur quelle ligne serait le bonbon, choisissons  à présent la colonne
     int n= tableauJeu.Length;
     Random aleatoire= new Random();
     int nb= aleatoire.Next(0,n);
@@ -46,40 +46,41 @@ int [][] ApresTour(int[][] tableauJeu){
         do {
             nb= aleatoire.Next(0,n);
         }
-        while(tableauJeu[indice][nb]!=0);
+        while(tableauJeu[indice][nb]!=0); // tant que la case aléatoire choisie n'est pas vide (=0)  alors en chercher une autre
     }
-    tableauJeu[indice][nb]=1;
-    return tableauJeu;
+    tableauJeu[indice][nb]=1; //lorsqu'on a trouvé notre case, la remplir avec un bonbon(=1)
+    return tableauJeu; // Retourner le nouveau tableau
 }
 
-void AfficherItem(int numero){
+void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE CETTE FONCTION + EN FIN DE PRG
     if (numero==0)
-        Console.Write("   ");
+        Console.Write("   "); // La case s'affiche vide si elle vaut 0
     if (numero==1){
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write(" ¤ ");
-        Console.ForegroundColor = ConsoleColor.Gray;    }
+        Console.ForegroundColor = ConsoleColor.Red;//
+        Console.Write(" ¤ ");// la case est remplie avec un bonbon si elle vaut 1
+        Console.ForegroundColor = ConsoleColor.Gray; //    
+        }
     if (numero==2){
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.Write(" @ ");
+        Console.Write(" @ "); // la case est remplie avec un rouleau réglisse si elle vaut 2
         Console.ForegroundColor = ConsoleColor.Gray;  
     }
     if (numero==3){
         Console.ForegroundColor = ConsoleColor.DarkRed; // Rouge foncé
-        Console.Write(" o ");
+        Console.Write(" o "); // la case est remplie avec un cookie si elle vaut 3
         Console.ForegroundColor = ConsoleColor.Gray;
     }
     if (numero==4){
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(" J ");
+        Console.Write(" J "); //  la case est remplie avec un sucre d'orge si elle vaut 4
         Console.ForegroundColor = ConsoleColor.Gray;
     }
 }
 
-int Score(int [][] tableauJeu){
+int Score(int [][] tableauJeu){ //fonction calculant le score
     int score=0;
-    int n= tableauJeu.Length;
-    for (int i=0; i<n; i++){
+    int n= tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
+    for (int i=0; i<n; i++){ // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
         for (int j=0; j<n; j++){
             if (tableauJeu[i][j]==1)
                 score+=1;
@@ -96,11 +97,11 @@ int Score(int [][] tableauJeu){
 
 
 
-void AfficherTableau(int[][] tableauJeu){
-    int n=tableauJeu.Length;
+void AfficherTableau(int[][] tableauJeu){ // Fonction s'occupant de la mise en forme dans la console
+    int n=tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
     Console.BackgroundColor = ConsoleColor.White;
     for (int i=0;i<n;i++){
-        Console.WriteLine(string.Concat(Enumerable.Repeat("",n)));
+        Console.WriteLine(string.Concat(Enumerable.Repeat("",n))); //
         Console.ForegroundColor = ConsoleColor.Black;
         Console.Write("|");
         Console.ForegroundColor = ConsoleColor.Gray;
@@ -116,7 +117,7 @@ Console.BackgroundColor = ConsoleColor.Black;
 }   
  
 
-
+// JUSTE POUR TESTER FONCTIONS
         // Déclaration et initialisation d'un tableau de tableaux
 int[][] tableauDeTableaux = new int[3][];
 
@@ -125,32 +126,32 @@ int[][] tableauDeTableaux = new int[3][];
         tableauDeTableaux[1] = new int[] {0,1,2};
         tableauDeTableaux[2] = new int[] {1,1,2};
 
-int [][] Mouvement (int [][] tableauJeu, char direction){
-    int n=tableauJeu.Length;
-
-   if (direction == 'z'){
-    for (int i=0; i<n ; i++){
-        int fusion=0;
-        for (int j=1; j<n;j++){
-            int k=0;
-            while ( j-1-k>=0 && tableauJeu[j-1-k][i]==0){
-                tableauJeu[j-1-k][i]=tableauJeu[j-k][i];
-                tableauJeu[j-k][i]=0;
-                k++;
+int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant les déplacements et fusions des bonbons
+    int n=tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
+// rappel: un seul mouvement possible par tour
+   if (direction == 'z'){ // en voulant tout swiper vers le haut
+    for (int i=0; i<n ; i++){ //on parcourt les colonnes
+        int fusion=0; // variable vérifiant qu'une seule fusion est effectuée par colonne par tour
+        for (int j=1; j<n;j++){ // boucle permettant de parcourir toutes les cases de la colonne (on parcourt les lignes)
+            int k=0; //variable permettant l'incrémentation de la case observée
+            while ( j-1-k>=0 && tableauJeu[j-1-k][i]==0){ // tant que la case observée n'est pas celle tout en haut du tableau et quelle est vide
+                tableauJeu[j-1-k][i]=tableauJeu[j-k][i]; // cette case prends la valeur de celle d'en dessous 
+                tableauJeu[j-k][i]=0;// la case d'en dessous de celle observée initialement devient vide
+                k++;// on observe ensuite la case d'en dessous
             }
-            if (j-k!=0){
-                if (tableauJeu[j-1-k][i]==tableauJeu[j-k][i] && fusion == 0){
-                    tableauJeu[j-1-k][i]++;
-                    tableauJeu[j-k][i]=0;
-                    fusion=1;
+            if (j-k!=0){// on verifie que la case observée n'est pas sur la ligner tout en haut sinon out of range
+                if (tableauJeu[j-1-k][i]==tableauJeu[j-k][i] && fusion == 0){ // si la case observée et celle d'en dessous ont la meme valeur et qu'aucune fusion n'a été effectuée sur la colonne
+                    tableauJeu[j-1-k][i]++;// les deux cases fusionnent et la valeur de la plus haute des deux s'incrémente de 1
+                    tableauJeu[j-k][i]=0;// la case la plus basse des deux se vide
+                    fusion=1;// la fusion a été effectuée
             }   }
-        }
+        }// on passe maintenent a la case suivante de la colonne 
+    }// on passe a la colonne suivante
     }
-    }
-    if (direction == 'q'){
-        for (int i=0; i<n ; i++){
-            int fusion=0;
-            for (int j=1;j<n;j++){
+    if (direction == 'q'){ // en voulant tout swiper vers la gauche
+        for (int i=0; i<n ; i++){ // on parcourt les lignes
+            int fusion=0; //variable vérifiant qu'une seule fusion est effectuée par colonne par tour
+            for (int j=1;j<n;j++){// on parcourt les cases sur une meme lignes (on parcourt les colonnes)
                 int k=0;
                 while( j-1-k>=0 &&tableauJeu[i][j-1-k]==0 ){
                     tableauJeu[i][j-1-k]=tableauJeu[i][j-k];
@@ -167,10 +168,10 @@ int [][] Mouvement (int [][] tableauJeu, char direction){
         }
     }
     
- if (direction == 'd'){
+ if (direction == 'd'){ // en voulant tout swiper vers la droite
         for (int i=0; i<n ; i++){
             int fusion=0;
-            for (int j=n-2;j>=0;j--){
+            for (int j=n-2;j>=0;j--){// on parcourt à l'envers 
                 int k=0;
                 while( j+1+k<=n-1 &&tableauJeu[i][j+1+k]==0 ){
                     tableauJeu[i][j+1+k]=tableauJeu[i][j+k];
@@ -186,7 +187,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction){
             }
         }
     }
-    if (direction == 's'){
+    if (direction == 's'){ // En voulant tout swiper vers le bas
         for (int i=0; i<n ; i++){
             int fusion=0;
             for (int j=n-1;j>=0;j--){
@@ -223,3 +224,6 @@ return tableauJeu;
     }
  int [][] a = Mouvement(tableauDeTableaux,'s');
 AfficherTableauDeTableaux(a);
+
+// Recap déroulement d'un tour: joueur swipe, cases fusionnent, une nouvelle case se remplie aléatoirement, 
+//le score est compté, le tableau s'affiche
