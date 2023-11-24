@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\jeu\\Jeu.csproj": {}
+    "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\projet\\projet-info\\jeu\\Jeu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\jeu\\Jeu.csproj": {
+    "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\projet\\projet-info\\jeu\\Jeu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\jeu\\Jeu.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\projet\\projet-info\\jeu\\Jeu.csproj",
         "projectName": "Jeu",
-        "projectPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\jeu\\Jeu.csproj",
+        "projectPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\projet\\projet-info\\jeu\\Jeu.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\Projet-info\\jeu\\obj\\",
+        "outputPath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\projet\\projet-info\\jeu\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"

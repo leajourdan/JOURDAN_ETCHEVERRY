@@ -54,15 +54,26 @@ int [][] ApresTour(int[][] tableauJeu){
 
 void AfficherItem(int numero){
     if (numero==0)
-        Console.WriteLine("");
-    if (numero==1)
-        Console.WriteLine("¤");
-    if (numero==2)
-        Console.WriteLine("@");
-    if (numero==3)
-        Console.WriteLine("o");
-    if (numero==4)
-        Console.WriteLine("J");
+        Console.Write("   ");
+    if (numero==1){
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write(" ¤ ");
+        Console.ForegroundColor = ConsoleColor.Gray;    }
+    if (numero==2){
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write(" @ ");
+        Console.ForegroundColor = ConsoleColor.Gray;  
+    }
+    if (numero==3){
+        Console.ForegroundColor = ConsoleColor.DarkRed; // Rouge foncé
+        Console.Write(" o ");
+        Console.ForegroundColor = ConsoleColor.Gray;
+    }
+    if (numero==4){
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write(" J ");
+        Console.ForegroundColor = ConsoleColor.Gray;
+    }
 }
 
 int Score(int [][] tableauJeu){
@@ -82,3 +93,24 @@ int Score(int [][] tableauJeu){
     }
     return score;
 }
+
+
+
+void AfficherTableau(int[][] tableauJeu){
+    int n=tableauJeu.Length;
+    Console.BackgroundColor = ConsoleColor.White;
+    for (int i=0;i<n;i++){
+        Console.WriteLine(string.Concat(Enumerable.Repeat("",n)));
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write("|");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        for(int j=0; j<n;j++){
+            AfficherItem(tableauJeu[i][j]);
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("|");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+    }
+Console.Write('\n');
+Console.BackgroundColor = ConsoleColor.Black;
+}   
