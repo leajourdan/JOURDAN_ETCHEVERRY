@@ -24,3 +24,10 @@ C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\
 C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.pdb
 =======
 >>>>>>> f11abea4c521373819db6cf258c9448b7cd1bdc5
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\bin\Debug\net6.0\Jeu.exe
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\bin\Debug\net6.0\Jeu.deps.json
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\bin\Debug\net6.0\Jeu.runtimeconfig.json
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\bin\Debug\net6.0\Jeu.dll
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\bin\Debug\net6.0\Jeu.pdb
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\Jeu.genruntimeconfig.cache
+C:\Users\leajo\OneDrive\Documents\INFORMATIQUE\Projet-info\Jeu\obj\Debug\net6.0\ref\Jeu.dll

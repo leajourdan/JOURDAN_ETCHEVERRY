@@ -1,20 +1,25 @@
 ﻿using System.Diagnostics;
+int n=0;
+int partieEnCours=1;
 
+//int [] essai= new int [] {1,3,5,0,3,0};
 int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
 {
     int count = 0;
-    foreach (int element  in tableau)
+    for(int i=0;i<tableau.Length;i++)
     {
-        if (element == 0)
+        if (tableau[i] == 0)
         {
             count++;
         }
     }
     return count;
 }
+//Console.Write(CountZeros(essai));
+
+
 
 int Lignes(int [][] tableauJeu){ //fonction trouvant une ligne au hasard contenant au moins 1 case vide 
-    int n= tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
     Random indice= new Random();
     int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue du chercher
     int k=0; //
@@ -35,12 +40,11 @@ int Lignes(int [][] tableauJeu){ //fonction trouvant une ligne au hasard contena
 
 int [][] ApresTour(int[][] tableauJeu){ // fonction rajoutant 1 bonbon dans une case aléatoire vide
     int indice=Lignes(tableauJeu); // on a deja choisi sur quelle ligne serait le bonbon, choisissons  à présent la colonne
-    int n= tableauJeu.Length;
     Random aleatoire= new Random();
     int nb= aleatoire.Next(0,n);
     if (indice==-1){
         Console.WriteLine("Tu as perdu! Gros nul");     //Si la grille est pleine , le joueur a perdu
-    
+        partieEnCours=0;
     }
     else{
         do {
@@ -75,11 +79,14 @@ void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE
         Console.Write(" J "); //  la case est remplie avec un sucre d'orge si elle vaut 4
         Console.ForegroundColor = ConsoleColor.Gray;
     }
+    if (numero==5){
+        Console.WriteLine("Victoire");
+        partieEnCours=0;
+    }
 }
 
 int Score(int [][] tableauJeu){ //fonction calculant le score
     int score=0;
-    int n= tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
     for (int i=0; i<n; i++){ // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
         for (int j=0; j<n; j++){
             if (tableauJeu[i][j]==1)
@@ -98,7 +105,6 @@ int Score(int [][] tableauJeu){ //fonction calculant le score
 
 
 void AfficherTableau(int[][] tableauJeu){ // Fonction s'occupant de la mise en forme dans la console
-    int n=tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
     Console.BackgroundColor = ConsoleColor.White;
     for (int i=0;i<n;i++){
         Console.WriteLine(string.Concat(Enumerable.Repeat("",n))); //
@@ -119,15 +125,15 @@ Console.BackgroundColor = ConsoleColor.Black;
 
 // JUSTE POUR TESTER FONCTIONS
         // Déclaration et initialisation d'un tableau de tableaux
-int[][] tableauDeTableaux = new int[3][];
+/*int[][] tableauDeTableaux = new int[3][];
 
         // Initialisation des sous-tableaux
         tableauDeTableaux[0] = new int[] {1,0,0};
         tableauDeTableaux[1] = new int[] {0,1,2};
         tableauDeTableaux[2] = new int[] {1,1,2};
+*/
 
 int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant les déplacements et fusions des bonbons
-    int n=tableauJeu.Length; //Tableau carré donc nombre de colonnes= nombre de lignes
 // rappel: un seul mouvement possible par tour
    if (direction == 'z'){ // en voulant tout swiper vers le haut
     for (int i=0; i<n ; i++){ //on parcourt les colonnes
@@ -211,7 +217,7 @@ return tableauJeu;
 }
 
 
- static void AfficherTableauDeTableaux(int[][] tableauDeTableaux)
+ /*static void AfficherTableauDeTableaux(int[][] tableauDeTableaux)
     {
         for (int i = 0; i < tableauDeTableaux.Length; i++)
         {
@@ -223,7 +229,56 @@ return tableauJeu;
         }
     }
  int [][] a = Mouvement(tableauDeTableaux,'s');
-AfficherTableauDeTableaux(a);
+AfficherTableauDeTableaux(a);*/
 
 // Recap déroulement d'un tour: joueur swipe, cases fusionnent, une nouvelle case se remplie aléatoirement, 
 //le score est compté, le tableau s'affiche
+
+int [][] InitTableauZeros(int [][]tableauFinal){
+    
+    for(int i=0;i<n;i++){
+        tableauFinal[i] = new int[n];
+        for(int j=0;j<n;j++){
+            tableauFinal[i][j]=0;
+        }
+        }
+    return tableauFinal;
+}
+
+void Main(){
+Console.WriteLine("Press A to play. Press R to see the commands");
+char A = Convert.ToChar(Console.ReadLine());
+if (A=='a'){
+    Console.WriteLine("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+    n= Convert.ToInt32(Console.ReadLine()!);
+    int [][] tableauFinal= new int [n][];
+    InitTableauZeros(tableauFinal);
+    ApresTour(tableauFinal);
+    ApresTour(tableauFinal);
+    AfficherTableau(tableauFinal);
+    Score(tableauFinal);
+    
+    while(partieEnCours==1){
+
+        Console.WriteLine("Swiper dans une direction");
+        char direction=Convert.ToChar(Console.ReadLine()!);
+        Mouvement(tableauFinal,direction);
+        Lignes(tableauFinal);
+        ApresTour(tableauFinal);
+        AfficherTableau(tableauFinal);
+        Score(tableauFinal);
+
+    }
+
+
+}
+else {
+    if(A=='r'){
+        Console.WriteLine("regles blabla a completer");
+    }
+}
+}
+
+Main();
+//Penser a enlever le blanc degueu de la console
+// A FAIRE TOUT BEAU
