@@ -1,6 +1,14 @@
 ﻿using System.Diagnostics;
+using System.IO;
+using System.Text;
 int n=0;
 int partieEnCours=1;
+
+StreamReader sr = new StreamReader("Score.txt");
+    //Read the first line of text
+    int meilleurScore= Convert.ToInt32(sr.ReadLine());
+    //meilleurScore=Convert.ToInt32(meilleurScore);
+
 
 //int [] essai= new int [] {1,3,5,0,3,0};
 int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
@@ -43,7 +51,7 @@ int [][] ApresTour(int[][] tableauJeu){ // fonction rajoutant 1 bonbon dans une 
     Random aleatoire= new Random();
     int nb= aleatoire.Next(0,n);
     if (indice==-1){
-        Console.WriteLine("Tu as perdu! Gros nul");     //Si la grille est pleine , le joueur a perdu
+        Console.WriteLine("Fin");     //Si la grille est pleine , le joueur a perdu
         partieEnCours=0;
     }
     else{
@@ -84,9 +92,9 @@ void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE
         partieEnCours=0;
     }
 }
-
+int score=0;
 int Score(int [][] tableauJeu){ //fonction calculant le score
-    int score=0;
+   
     for (int i=0; i<n; i++){ // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
         for (int j=0; j<n; j++){
             if (tableauJeu[i][j]==1)
@@ -103,18 +111,18 @@ int Score(int [][] tableauJeu){ //fonction calculant le score
 }
 
 
-
 void AfficherTableau(int[][] tableauJeu){ // Fonction s'occupant de la mise en forme dans la console
-    Console.BackgroundColor = ConsoleColor.White;
+   // Console.BackgroundColor = ConsoleColor.White;
+
     for (int i=0;i<n;i++){
         Console.WriteLine(string.Concat(Enumerable.Repeat("",n))); //
         Console.ForegroundColor = ConsoleColor.Black;
-        Console.Write("|");
+        Console.Write($"|");
         Console.ForegroundColor = ConsoleColor.Gray;
         for(int j=0; j<n;j++){
             AfficherItem(tableauJeu[i][j]);
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("|");
+            Console.Write($"|");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
@@ -258,8 +266,10 @@ if (A=='a'){
     AfficherTableau(tableauFinal);
     Score(tableauFinal);
     
+    
     while(partieEnCours==1){
 
+        Console.WriteLine ($"Score={score}");
         Console.WriteLine("Swiper dans une direction");
         char direction=Convert.ToChar(Console.ReadLine()!);
         Mouvement(tableauFinal,direction);
@@ -270,14 +280,28 @@ if (A=='a'){
 
     }
 
-
-}
+    Console.WriteLine ($"Votre score est de {score}points.");
+    if (score>meilleurScore){
+        meilleurScore=score;
+        StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
+    //Write a line of text
+        sw.WriteLine(score);
+        Console.WriteLine("Bravo, vous avez battu un nouveau record!");
+    }
+    else {
+        Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
+    }
+     }
 else {
     if(A=='r'){
-        Console.WriteLine("regles blabla a completer");
+        Console.WriteLine("Appuyer sur z pour swiper vers le haut");
+        Console.WriteLine("Appuyer sur s pour swiper vers le bas");
+        Console.WriteLine("Appuyer sur d pour swiper vers la droite");
+        Console.WriteLine("Appuyer sur q pour swiper vers la gauche");
     }
 }
 }
+
 
 Main();
 //Penser a enlever le blanc degueu de la console
