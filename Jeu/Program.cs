@@ -1,13 +1,11 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Text;
+
 int n=0;
 int partieEnCours=1;
 
-StreamReader sr = new StreamReader("Score.txt");
-    //Read the first line of text
-    int meilleurScore= Convert.ToInt32(sr.ReadLine());
-    //meilleurScore=Convert.ToInt32(meilleurScore);
+
 
 
 //int [] essai= new int [] {1,3,5,0,3,0};
@@ -86,10 +84,7 @@ void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE
         Console.Write(" J "); //  la case est remplie avec un sucre d'orge si elle vaut 4
         Console.ForegroundColor = ConsoleColor.Gray;
     }
-    /*if (numero==5){
-        Console.WriteLine("Victoire");
-        partieEnCours=0;
-    }*/
+   
 }
 
 int Score(int [][] tableauJeu){ //fonction calculant le score
@@ -132,15 +127,7 @@ Console.Write('\n');
 }   
  
 
-// JUSTE POUR TESTER FONCTIONS
-        // Déclaration et initialisation d'un tableau de tableaux
-/*int[][] tableauDeTableaux = new int[3][];
 
-        // Initialisation des sous-tableaux
-        tableauDeTableaux[0] = new int[] {1,0,0};
-        tableauDeTableaux[1] = new int[] {0,1,2};
-        tableauDeTableaux[2] = new int[] {1,1,2};
-*/
 
 int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant les déplacements et fusions des bonbons
 // rappel: un seul mouvement possible par tour
@@ -160,11 +147,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                     tableauJeu[j-k][i]=0;// la case la plus basse des deux se vide
                     fusion=1;// la fusion a été effectuée
                 } 
-              /*  if (tableauJeu[j-1-k][i]+tableauJeu[j-k][i] == 5){
-                   Console.WriteLine("impossible, swipe autrement");
-                    char u=Convert.ToChar(Console.ReadLine()!);
-                    Mouvement(tableauFinal,u);
-                }*/
+            
 
             }
 
@@ -187,11 +170,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                         fusion=1;
                         tableauJeu[i][j-k]=0;
                     }
-                    /*if (tableauJeu[i][j-1-k]+tableauJeu[i][j-k]== 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                        char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
-                    }*/
+                   
                 }
             }
         }
@@ -213,11 +192,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                         fusion=1;
                         tableauJeu[i][j+k]=0;
                     }
-                   /* if (tableauJeu[i][j+1+k]=tableauJeu[i][j+k]== 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                       char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
-                    }*/
+                  
                     
                     
                 }
@@ -241,11 +216,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                         fusion=1;
                         tableauJeu[j+k][i]=0;
                     }
-                     /*if (tableauJeu[j+1+k][i]+tableauJeu[j+k][i] == 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                        char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
-                    }*/
+                    
                 }
             }
         }
@@ -255,22 +226,7 @@ return tableauJeu;
 }
 
 
- /*static void AfficherTableauDeTableaux(int[][] tableauDeTableaux)
-    {
-        for (int i = 0; i < tableauDeTableaux.Length; i++)
-        {
-            for (int j = 0; j < tableauDeTableaux[i].Length; j++)
-            {
-                Console.Write(tableauDeTableaux[i][j] + " ");
-            }
-            Console.WriteLine(); // Passer à la ligne après chaque sous-tableau
-        }
-    }
- int [][] a = Mouvement(tableauDeTableaux,'s');
-AfficherTableauDeTableaux(a);*/
 
-// Recap déroulement d'un tour: joueur swipe, cases fusionnent, une nouvelle case se remplie aléatoirement, 
-//le score est compté, le tableau s'affiche
 
 int [][] InitTableauZeros(int [][]tableauFinal){
     
@@ -312,13 +268,22 @@ int scoreFinal=0;
         }
 
     }
+    
      Console.WriteLine ($"Votre score est de {scoreFinal} points.");
+     StreamReader sr = new StreamReader("Score.txt");
+    //Read the first line of text
+    int meilleurScore= Convert.ToInt32(sr.ReadLine());
+    sr.Close();
+
+
     if (scoreFinal>meilleurScore){
         meilleurScore=scoreFinal;
         StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
     //Write a line of text
         sw.WriteLine(Score(tableauFinal));
         Console.WriteLine("Bravo, vous avez battu un nouveau record!");
+        sw.Close();
+        
     }
     else {
         Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
@@ -339,3 +304,6 @@ else {
 Main();
 //Penser a enlever le blanc degueu de la console
 // A FAIRE TOUT BEAU
+
+
+        // zafficher ancien record
