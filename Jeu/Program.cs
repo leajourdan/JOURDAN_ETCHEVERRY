@@ -330,6 +330,7 @@ else {
         Console.WriteLine("Appuyer sur s pour swiper vers le bas");
         Console.WriteLine("Appuyer sur d pour swiper vers la droite");
         Console.WriteLine("Appuyer sur q pour swiper vers la gauche");
+        Console.WriteLine("But: Avoir le plus haut score possible. Attention: dès que le tableau est plein vous avez perdu");
     }
 }
 }
