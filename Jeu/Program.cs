@@ -87,10 +87,10 @@ void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE
         Console.Write(" J "); //  la case est remplie avec un sucre d'orge si elle vaut 4
         Console.ForegroundColor = ConsoleColor.Gray;
     }
-    if (numero==5){
+    /*if (numero==5){
         Console.WriteLine("Victoire");
         partieEnCours=0;
-    }
+    }*/
 }
 
 int Score(int [][] tableauJeu){ //fonction calculant le score
@@ -105,6 +105,8 @@ int Score(int [][] tableauJeu){ //fonction calculant le score
                 score+=7;
             if (tableauJeu[i][j]==4)
                 score+=15;
+            if (tableauJeu[i][j]==5)
+                Console.WriteLine(score);
         }
     }
     return score;
@@ -154,11 +156,19 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                 k++;// on observe ensuite la case d'en dessous
             }
             if (j-k!=0){// on verifie que la case observée n'est pas sur la ligner tout en haut sinon out of range
-                if (tableauJeu[j-1-k][i]==tableauJeu[j-k][i] && fusion == 0){ // si la case observée et celle d'en dessous ont la meme valeur et qu'aucune fusion n'a été effectuée sur la colonne
+                if (tableauJeu[j-1-k][i]==tableauJeu[j-k][i] && fusion == 0 && tableauJeu[j-1-k][i]!= 4){ // si la case observée et celle d'en dessous ont la meme valeur et qu'aucune fusion n'a été effectuée sur la colonne
                     tableauJeu[j-1-k][i]++;// les deux cases fusionnent et la valeur de la plus haute des deux s'incrémente de 1
                     tableauJeu[j-k][i]=0;// la case la plus basse des deux se vide
                     fusion=1;// la fusion a été effectuée
-            }   }
+                } 
+              /*  if (tableauJeu[j-1-k][i]+tableauJeu[j-k][i] == 5){
+                   Console.WriteLine("impossible, swipe autrement");
+                    char u=Convert.ToChar(Console.ReadLine()!);
+                    Mouvement(tableauFinal,u);
+                }*/
+
+            }
+
         }// on passe maintenent a la case suivante de la colonne 
     }// on passe a la colonne suivante
     }
@@ -173,11 +183,17 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                     k++;
                 }
                 if (j-k!=0){
-                    if (tableauJeu[i][j-1-k]==tableauJeu[i][j-k] && fusion==0){
+                    if (tableauJeu[i][j-1-k]==tableauJeu[i][j-k] && fusion==0 && tableauJeu[i][j-1-k] != 4){
                         tableauJeu[i][j-1-k]++;
                         fusion=1;
                         tableauJeu[i][j-k]=0;
-                }}
+                    }
+                    /*if (tableauJeu[i][j-1-k]+tableauJeu[i][j-k]== 5){
+                        Console.WriteLine("impossible, swipe autrement");
+                        char u=Convert.ToChar(Console.ReadLine()!);
+                        Mouvement(tableauFinal,u);
+                    }*/
+                }
             }
         }
     }
@@ -193,11 +209,20 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                     k++;
                 }
                 if (j+k!=n-1){
-                    if (tableauJeu[i][j+1+k]==tableauJeu[i][j+k] && fusion==0){
+                    if (tableauJeu[i][j+1+k]==tableauJeu[i][j+k] && fusion==0 && tableauJeu[i][j+1+k] !=4 ){
                         tableauJeu[i][j+1+k]++;
                         fusion=1;
                         tableauJeu[i][j+k]=0;
-                }}
+                    }
+                   /* if (tableauJeu[i][j+1+k]=tableauJeu[i][j+k]== 5){
+                        Console.WriteLine("impossible, swipe autrement");
+                       char u=Convert.ToChar(Console.ReadLine()!);
+                        Mouvement(tableauFinal,u);
+                    }*/
+                    
+                    
+                }
+
             }
         }
     }
@@ -212,11 +237,17 @@ int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant
                     k++;
                 }
                 if (j+k!=n-1){
-                    if (tableauJeu[j+1+k][i]==tableauJeu[j+k][i] && fusion==0){
+                    if (tableauJeu[j+1+k][i]==tableauJeu[j+k][i] && fusion==0 && tableauJeu[j+1+k][i] !=4 ){
                         tableauJeu[j+1+k][i]++;
                         fusion=1;
                         tableauJeu[j+k][i]=0;
-                }}
+                    }
+                     /*if (tableauJeu[j+1+k][i]+tableauJeu[j+k][i] == 5){
+                        Console.WriteLine("impossible, swipe autrement");
+                        char u=Convert.ToChar(Console.ReadLine()!);
+                        Mouvement(tableauFinal,u);
+                    }*/
+                }
             }
         }
     }
@@ -265,7 +296,7 @@ if (A=='a'){
     ApresTour(tableauFinal);
     AfficherTableau(tableauFinal);
     Score(tableauFinal);
-
+int scoreFinal=0;
     while(partieEnCours==1){
 
         Console.WriteLine ($"Score={Score(tableauFinal)}");
@@ -276,12 +307,12 @@ if (A=='a'){
         ApresTour(tableauFinal);
         AfficherTableau(tableauFinal);
         Score(tableauFinal);
+        scoreFinal=Score(tableauFinal);
 
     }
-
-     Console.WriteLine ($"Votre score est de {Score(tableauFinal)}points.");
-    if (Score(tableauFinal)>meilleurScore){
-        meilleurScore=Score(tableauFinal);
+     Console.WriteLine ($"Votre score est de {scoreFinal} points.");
+    if (scoreFinal>meilleurScore){
+        meilleurScore=scoreFinal;
         StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
     //Write a line of text
         sw.WriteLine(Score(tableauFinal));
