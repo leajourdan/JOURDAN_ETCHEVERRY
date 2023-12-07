@@ -92,9 +92,9 @@ void AfficherItem(int numero){ // JE PENSE QUE DANS L'ORDRE IL VAUT MIEUX METTRE
         partieEnCours=0;
     }
 }
-int score=0;
+
 int Score(int [][] tableauJeu){ //fonction calculant le score
-   
+   int score=0;
     for (int i=0; i<n; i++){ // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
         for (int j=0; j<n; j++){
             if (tableauJeu[i][j]==1)
@@ -265,11 +265,10 @@ if (A=='a'){
     ApresTour(tableauFinal);
     AfficherTableau(tableauFinal);
     Score(tableauFinal);
-    
-    
+
     while(partieEnCours==1){
 
-        Console.WriteLine ($"Score={score}");
+        Console.WriteLine ($"Score={Score(tableauFinal)}");
         Console.WriteLine("Swiper dans une direction");
         char direction=Convert.ToChar(Console.ReadLine()!);
         Mouvement(tableauFinal,direction);
@@ -280,12 +279,12 @@ if (A=='a'){
 
     }
 
-    Console.WriteLine ($"Votre score est de {score}points.");
-    if (score>meilleurScore){
-        meilleurScore=score;
+     Console.WriteLine ($"Votre score est de {Score(tableauFinal)}points.");
+    if (Score(tableauFinal)>meilleurScore){
+        meilleurScore=Score(tableauFinal);
         StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
     //Write a line of text
-        sw.WriteLine(score);
+        sw.WriteLine(Score(tableauFinal));
         Console.WriteLine("Bravo, vous avez battu un nouveau record!");
     }
     else {
