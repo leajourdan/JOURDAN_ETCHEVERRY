@@ -30,8 +30,8 @@ int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un 
 int Lignes(int [][] tableauJeu){ //fonction trouvant une ligne au hasard contenant au moins 1 case vide 
     Random indice= new Random();
     int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue du chercher
-    int k=0; //
-    while (trouve==0 & k<n){
+    int k=0; // condition d'arret du while 
+    while (trouve==0 & k<100*n){ // si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre sûr. 
         int a=indice.Next(0,n); // a est une nombre choisi aléatoirement entre 0 et n-1
         if(CountZeros(tableauJeu[a])!=0){
             trouve=1;
