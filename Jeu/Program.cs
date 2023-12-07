@@ -59,8 +59,8 @@ int [][] ApresTour(int[][] tableauJeu){ // fonction rajoutant 1 bonbon dans une 
             nb= aleatoire.Next(0,n);
         }
         while(tableauJeu[indice][nb]!=0); // tant que la case aléatoire choisie n'est pas vide (=0)  alors en chercher une autre
-    }
     tableauJeu[indice][nb]=1; //lorsqu'on a trouvé notre case, la remplir avec un bonbon(=1)
+    }
     return tableauJeu; // Retourner le nouveau tableau
 }
 
@@ -310,7 +310,7 @@ int scoreFinal=0;
         scoreFinal=Score(tableauFinal);
 
     }
-     Console.WriteLine ($"Votre score est de {scoreFinal} points.");
+    /* Console.WriteLine ($"Votre score est de {scoreFinal} points.");
     if (scoreFinal>meilleurScore){
         meilleurScore=scoreFinal;
         StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
@@ -320,7 +320,7 @@ int scoreFinal=0;
     }
     else {
         Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
-    }
+    }*/
      }
 else {
     if(A=='r'){
