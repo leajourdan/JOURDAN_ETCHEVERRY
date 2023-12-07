@@ -51,7 +51,6 @@ int [][] ApresTour(int[][] tableauJeu){ // fonction rajoutant 1 bonbon dans une 
     Random aleatoire= new Random();
     int nb= aleatoire.Next(0,n);
     if (indice==-1){
-        Console.WriteLine("Fin");     //Si la grille est pleine , le joueur a perdu
         partieEnCours=0;
     }
     else{
@@ -308,6 +307,9 @@ int scoreFinal=0;
         AfficherTableau(tableauFinal);
         Score(tableauFinal);
         scoreFinal=Score(tableauFinal);
+        if (Lignes(tableauFinal)==-1){
+            partieEnCours=0;
+        }
 
     }
     /* Console.WriteLine ($"Votre score est de {scoreFinal} points.");
