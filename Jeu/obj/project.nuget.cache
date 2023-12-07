@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nZ0b8HASjHhEmv4lyIyz0ZBsT/+AnXBzN7d4ZQ07vsfax9Ji+PDlxSqNpn1Fin7So+Qk9DD8pQ/Kab8vxKPgZQ==",
+  "dgSpecHash": "GUwf7tg+8LiBMHet6b49nH+gVrbDIOe0BB3iLzQJtwzshY2ULpbHcmx6fGVOrD1kMwfa0mhmM2KEjhMZMU+mRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\leajo\\OneDrive\\Documents\\INFORMATIQUE\\Projet-info\\Jeu\\Jeu.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\maxim\\OneDrive\\Bureau\\Cours\\ENSC\\INFO\\Projet\\projet-info\\jeu\\Jeu.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
   "logs": []
 }
