@@ -117,19 +117,19 @@ void AfficherTableau(int[][] tableauJeu){ // Fonction s'occupant de la mise en f
    // Console.BackgroundColor = ConsoleColor.White;
 
     for (int i=0;i<n;i++){
-        Console.WriteLine(string.Concat(Enumerable.Repeat("",n))); //
-        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write("+");
+        Console.WriteLine(string.Concat(Enumerable.Repeat("---+",n)));
+        Console.Write(string.Concat(Enumerable.Repeat("",n)));
         Console.Write($"|");
-        Console.ForegroundColor = ConsoleColor.Gray;
         for(int j=0; j<n;j++){
             AfficherItem(tableauJeu[i][j]);
-            Console.ForegroundColor = ConsoleColor.Black;
             Console.Write($"|");
-            Console.ForegroundColor = ConsoleColor.Gray;
         }
+    Console.Write('\n');
     }
+Console.Write("+");
+Console.WriteLine(string.Concat(Enumerable.Repeat("---+",n)));
 Console.Write('\n');
-Console.BackgroundColor = ConsoleColor.Black;
 }   
  
 
