@@ -310,7 +310,7 @@ int scoreFinal=0;
         scoreFinal=Score(tableauFinal);
 
     }
-    /* Console.WriteLine ($"Votre score est de {scoreFinal} points.");
+     Console.WriteLine ($"Votre score est de {scoreFinal} points.");
     if (scoreFinal>meilleurScore){
         meilleurScore=scoreFinal;
         StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
@@ -320,7 +320,7 @@ int scoreFinal=0;
     }
     else {
         Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
-    }*/
+    }
      }
 else {
     if(A=='r'){
