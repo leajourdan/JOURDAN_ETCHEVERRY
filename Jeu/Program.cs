@@ -240,64 +240,151 @@ int [][] InitTableauZeros(int [][]tableauFinal){
 }
 
 void Main(){
-Console.WriteLine("Press A to play. Press R to see the commands");
-char A = Convert.ToChar(Console.ReadLine());
-if (A=='a'){
-    Console.WriteLine("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
-    n= Convert.ToInt32(Console.ReadLine()!);
-    int [][] tableauFinal= new int [n][];
-    InitTableauZeros(tableauFinal);
-    ApresTour(tableauFinal);
-    ApresTour(tableauFinal);
-    AfficherTableau(tableauFinal);
-    Score(tableauFinal);
-int scoreFinal=0;
-    while(partieEnCours==1){
+    Console.WriteLine("Press A to play. Press R to see the commands");
+    char A = Convert.ToChar(Console.ReadLine());
+    if (A=='a'){
+        Console.WriteLine("Choisir le mode de jeu:");
+        Console.WriteLine("1:Facile (50 points en 35 déplacements)");
+        Console.WriteLine("2:Moyen (50 points en 30 déplacements)");
+        Console.WriteLine("3:Difficile (50 points en 20 déplacements)");
+        Console.WriteLine("4: Record ");// libre
+        Console.WriteLine("Appuyer sur le chiffre souhaité:");
+        int B= Convert.ToInt32(Console.ReadLine());
+        if(B==4){
+            StreamReader sr = new StreamReader("Score.txt");
+            //Read the first line of text
+            int meilleurScore= Convert.ToInt32(sr.ReadLine());
+            sr.Close();
+            Console.WriteLine($"Record à battre: {meilleurScore} points");
+            Console.WriteLine("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+            n= Convert.ToInt32(Console.ReadLine()!);
+            int [][] tableauFinal= new int [n][];
+            InitTableauZeros(tableauFinal);
+            ApresTour(tableauFinal);
+            ApresTour(tableauFinal);
+            AfficherTableau(tableauFinal);
+            Score(tableauFinal);
+            int scoreFinal=0;
+            while(partieEnCours==1){
 
-        Console.WriteLine ($"Score={Score(tableauFinal)}");
-        Console.WriteLine("Swiper dans une direction");
-        char direction=Convert.ToChar(Console.ReadLine()!);
-        Mouvement(tableauFinal,direction);
-        Lignes(tableauFinal);
-        ApresTour(tableauFinal);
-        AfficherTableau(tableauFinal);
-        Score(tableauFinal);
-        scoreFinal=Score(tableauFinal);
-        if (Lignes(tableauFinal)==-1){
-            partieEnCours=0;
+                Console.WriteLine ($"Score={Score(tableauFinal)}");
+                Console.WriteLine("Swiper dans une direction");
+                char direction=Convert.ToChar(Console.ReadLine()!);
+                Mouvement(tableauFinal,direction);
+                Lignes(tableauFinal);
+                ApresTour(tableauFinal);
+                AfficherTableau(tableauFinal);
+                Score(tableauFinal);
+                scoreFinal=Score(tableauFinal);
+                if (Lignes(tableauFinal)==-1){
+                    partieEnCours=0;
+                }
+            }
+        
+            Console.WriteLine ($"Votre score est de {scoreFinal} points.");
+            
+
+
+            if (scoreFinal>meilleurScore){
+                meilleurScore=scoreFinal;
+                StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
+                //Write a line of text
+                sw.WriteLine(Score(tableauFinal));
+                Console.WriteLine("Bravo, vous avez battu un nouveau record!");
+                sw.Close();
+            }
+            
+            else {
+                Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
+            
+            }
+        }
+        else {
+            int tour=0;
+            int compteurTour=0;
+            if(B==1)
+                tour=35;
+            if (B==2)
+                tour=30;
+            if (B==3)
+                tour=20;
+            n=3;
+            int [][] tableauFinal= new int [n][];
+            InitTableauZeros(tableauFinal);
+            ApresTour(tableauFinal);
+            ApresTour(tableauFinal);
+            AfficherTableau(tableauFinal);
+            Score(tableauFinal);
+            int scoreFinal=0;
+            while(partieEnCours==1 && compteurTour<= tour && scoreFinal< 50){
+
+                Console.WriteLine ($"Score={Score(tableauFinal)}");
+                Console.WriteLine($"Nombre de déplacements restants: {tour-compteurTour} ");
+                Console.WriteLine("Swiper dans une direction");
+                char direction=Convert.ToChar(Console.ReadLine()!);
+                Mouvement(tableauFinal,direction);
+                Lignes(tableauFinal);
+                ApresTour(tableauFinal);
+                AfficherTableau(tableauFinal);
+                Score(tableauFinal);
+                scoreFinal=Score(tableauFinal);
+                compteurTour++;
+                if (Lignes(tableauFinal)==-1){
+                    partieEnCours=0;
+                }
+            }
+            if ( scoreFinal<50){
+                Console.WriteLine($"DOMMAGE.   Tu as atteint {scoreFinal} points en {compteurTour} déplacements...");
+                Console.WriteLine("Réessaie :)");
+
+            }
+            else {
+                Console.WriteLine($"Félicitations ! Tu as atteint {scoreFinal} points en {compteurTour} déplacements! :)");
+            }
+        }
+    }
+    else {
+        if(A=='r'){
+            Console.WriteLine("Appuyer sur z pour swiper vers le haut");
+            Console.WriteLine("Appuyer sur s pour swiper vers le bas");
+            Console.WriteLine("Appuyer sur d pour swiper vers la droite");
+            Console.WriteLine("Appuyer sur q pour swiper vers la gauche");            
+            Console.Write("\n");
+
+            Console.WriteLine("But: Avoir le plus haut score possible. Attention: dès que le tableau est plein vous avez perdu");
+            Console.Write("\n");
+            Console.WriteLine("Valeur des items:");
+            Console.Write("Le bonbon ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("¤ ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(": 1 point");
+            Console.Write("\n");
+            Console.Write("Le rouleau de réglisse ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("@ ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(": 3 points");
+            Console.Write("\n");
+            Console.Write("Le donut ");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("o ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(": 7 points");
+            Console.Write("\n");
+            Console.Write("Le sucre d'orge ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("J ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(": 15 points");
+            Console.Write("\n");
+            
+
+
+
         }
 
     }
-    
-     Console.WriteLine ($"Votre score est de {scoreFinal} points.");
-     StreamReader sr = new StreamReader("Score.txt");
-    //Read the first line of text
-    int meilleurScore= Convert.ToInt32(sr.ReadLine());
-    sr.Close();
-
-
-    if (scoreFinal>meilleurScore){
-        meilleurScore=scoreFinal;
-        StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
-    //Write a line of text
-        sw.WriteLine(Score(tableauFinal));
-        Console.WriteLine("Bravo, vous avez battu un nouveau record!");
-        sw.Close();
-        
-    }
-    else {
-        Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
-    }
-     }
-else {
-    if(A=='r'){
-        Console.WriteLine("Appuyer sur z pour swiper vers le haut");
-        Console.WriteLine("Appuyer sur s pour swiper vers le bas");
-        Console.WriteLine("Appuyer sur d pour swiper vers la droite");
-        Console.WriteLine("Appuyer sur q pour swiper vers la gauche");
-        Console.WriteLine("But: Avoir le plus haut score possible. Attention: dès que le tableau est plein vous avez perdu");
-    }
-}
 }
 
 
