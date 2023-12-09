@@ -1,25 +1,12 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Text;
-<<<<<<< HEAD
-int n=0;
-int partieEnCours=1;
-
-StreamReader sr = new StreamReader("Score.txt");
-    //Read the first line of text
-    int meilleurScore= Convert.ToInt32(sr.ReadLine());
-    //meilleurScore=Convert.ToInt32(meilleurScore);
-
-
-//int [] essai= new int [] {1,3,5,0,3,0};
-=======
 
 
 int n=0;
 int partieEnCours=1;
 
 
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
 int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
 {
     int count = 0;
@@ -158,41 +145,6 @@ void AfficherTableau(int[][] tableauJeu) // Fonction s'occupant de la mise en fo
 }   
  
 
-<<<<<<< HEAD
-// JUSTE POUR TESTER FONCTIONS
-        // Déclaration et initialisation d'un tableau de tableaux
-/*int[][] tableauDeTableaux = new int[3][];
-
-        // Initialisation des sous-tableaux
-        tableauDeTableaux[0] = new int[] {1,0,0};
-        tableauDeTableaux[1] = new int[] {0,1,2};
-        tableauDeTableaux[2] = new int[] {1,1,2};
-*/
-
-int [][] Mouvement (int [][] tableauJeu, char direction){ // fonction réalisant les déplacements et fusions des bonbons
-// rappel: un seul mouvement possible par tour
-   if (direction == 'z'){ // en voulant tout swiper vers le haut
-    for (int i=0; i<n ; i++){ //on parcourt les colonnes
-        int fusion=0; // variable vérifiant qu'une seule fusion est effectuée par colonne par tour
-        for (int j=1; j<n;j++){ // boucle permettant de parcourir toutes les cases de la colonne (on parcourt les lignes)
-            int k=0; //variable permettant l'incrémentation de la case observée
-            while ( j-1-k>=0 && tableauJeu[j-1-k][i]==0){ // tant que la case observée n'est pas celle tout en haut du tableau et quelle est vide
-                tableauJeu[j-1-k][i]=tableauJeu[j-k][i]; // cette case prends la valeur de celle d'en dessous 
-                tableauJeu[j-k][i]=0;// la case d'en dessous de celle observée initialement devient vide
-                k++;// on observe ensuite la case d'en dessous
-            }
-            if (j-k!=0){// on verifie que la case observée n'est pas sur la ligner tout en haut sinon out of range
-                if (tableauJeu[j-1-k][i]==tableauJeu[j-k][i] && fusion == 0 && tableauJeu[j-1-k][i]!= 4){ // si la case observée et celle d'en dessous ont la meme valeur et qu'aucune fusion n'a été effectuée sur la colonne
-                    tableauJeu[j-1-k][i]++;// les deux cases fusionnent et la valeur de la plus haute des deux s'incrémente de 1
-                    tableauJeu[j-k][i]=0;// la case la plus basse des deux se vide
-                    fusion=1;// la fusion a été effectuée
-                } 
-              /*  if (tableauJeu[j-1-k][i]+tableauJeu[j-k][i] == 5){
-                   Console.WriteLine("impossible, swipe autrement");
-                    char u=Convert.ToChar(Console.ReadLine()!);
-                    Mouvement(tableauFinal,u);
-                }*/
-=======
 int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant les déplacements et fusions des bonbons
 // rappel: un seul mouvement possible par tour
 {   
@@ -219,7 +171,6 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
                         fusion=1;// la fusion a été effectuée
                     } 
                 
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
 
                 }
 
@@ -248,15 +199,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
                         fusion=1;
                         tableauJeu[i][j-k]=0;
                     }
-<<<<<<< HEAD
-                    /*if (tableauJeu[i][j-1-k]+tableauJeu[i][j-k]== 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                        char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
-                    }*/
-=======
                 
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
                 }
             }
         }
@@ -284,15 +227,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
                         fusion=1;
                         tableauJeu[i][j+k]=0;
                     }
-<<<<<<< HEAD
-                   /* if (tableauJeu[i][j+1+k]=tableauJeu[i][j+k]== 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                       char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
-                    }*/
-=======
                 
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
                     
                     
                 }
@@ -336,29 +271,8 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
 }
 
 
-<<<<<<< HEAD
- /*static void AfficherTableauDeTableaux(int[][] tableauDeTableaux)
-    {
-        for (int i = 0; i < tableauDeTableaux.Length; i++)
-        {
-            for (int j = 0; j < tableauDeTableaux[i].Length; j++)
-            {
-                Console.Write(tableauDeTableaux[i][j] + " ");
-            }
-            Console.WriteLine(); // Passer à la ligne après chaque sous-tableau
-        }
-    }
- int [][] a = Mouvement(tableauDeTableaux,'s');
-AfficherTableauDeTableaux(a);*/
-
-// Recap déroulement d'un tour: joueur swipe, cases fusionnent, une nouvelle case se remplie aléatoirement, 
-//le score est compté, le tableau s'affiche
-
-int [][] InitTableauZeros(int [][]tableauFinal){
-=======
 int [][] InitTableauZeros(int [][]tableauFinal)
 {
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
     
     for(int i=0;i<n;i++)
     {
@@ -369,47 +283,6 @@ int [][] InitTableauZeros(int [][]tableauFinal)
     }
     return tableauFinal;
 }
-
-<<<<<<< HEAD
-void Main(){
-Console.WriteLine("Press A to play. Press R to see the commands");
-char A = Convert.ToChar(Console.ReadLine());
-if (A=='a'){
-    Console.WriteLine("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
-    n= Convert.ToInt32(Console.ReadLine()!);
-    int [][] tableauFinal= new int [n][];
-    InitTableauZeros(tableauFinal);
-    ApresTour(tableauFinal);
-    ApresTour(tableauFinal);
-    AfficherTableau(tableauFinal);
-    Score(tableauFinal);
-int scoreFinal=0;
-    while(partieEnCours==1){
-
-        Console.WriteLine ($"Score={Score(tableauFinal)}");
-        Console.WriteLine("Swiper dans une direction");
-        char direction=Convert.ToChar(Console.ReadLine()!);
-        Mouvement(tableauFinal,direction);
-        Lignes(tableauFinal);
-        ApresTour(tableauFinal);
-        AfficherTableau(tableauFinal);
-        Score(tableauFinal);
-        scoreFinal=Score(tableauFinal);
-        if (Lignes(tableauFinal)==-1){
-            partieEnCours=0;
-        }
-
-    }
-     Console.WriteLine ($"Votre score est de {scoreFinal} points.");
-    if (scoreFinal>meilleurScore){
-        meilleurScore=scoreFinal;
-        StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
-    //Write a line of text
-        sw.WriteLine(Score(tableauFinal));
-        Console.WriteLine("Bravo, vous avez battu un nouveau record!");
-    }
-    else {
-        Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
 
 void AfficherLentement(string texte){
     foreach (char c in texte)
@@ -568,27 +441,11 @@ void Main()
             Console.Write("\n");
 
         }
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
     }
-     }
-else {
-    if(A=='r'){
-        Console.WriteLine("Appuyer sur Z pour swiper vers le haut");
-        Console.WriteLine("Appuyer sur S pour swiper vers le bas");
-        Console.WriteLine("Appuyer sur D pour swiper vers la droite");
-        Console.WriteLine("Appuyer sur Q pour swiper vers la gauche");
-        Console.WriteLine("But: Avoir le plus haut score possible. Attention: dès que le tableau est plein vous avez perdu");
-    }
-}
 }
 
 
 Main();
-<<<<<<< HEAD
-//Penser a enlever le blanc degueu de la console
-// A FAIRE TOUT BEAU
-=======
 // efets sonores
 // rapport
 // matrice
->>>>>>> 295591431bd977ae410b236386804799219c4a3e
