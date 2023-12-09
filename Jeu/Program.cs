@@ -411,19 +411,26 @@ int scoreFinal=0;
     else {
         Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
 =======
+void AfficherLentement(string texte){
+    foreach (char c in texte)
+    {
+        Console.Write(c);
+        System.Threading.Thread.Sleep(50);
+    }
+}
 
 void Main()
 {
-    Console.WriteLine("Press A to play. Press R to see the commands");
+    AfficherLentement("Press A to play. Press R to see the commands");
     char A = Convert.ToChar(Console.ReadLine());
     if (A=='a')
     {
-        Console.WriteLine("Choisir le mode de jeu:");
-        Console.WriteLine("1:Facile (50 points en 35 déplacements)");
-        Console.WriteLine("2:Moyen (50 points en 30 déplacements)");
-        Console.WriteLine("3:Difficile (50 points en 20 déplacements)");
-        Console.WriteLine("4: Record ");// libre
-        Console.WriteLine("Appuyer sur le chiffre souhaité:");
+        AfficherLentement("Choisir le mode de jeu:");
+        AfficherLentement("1:Facile (50 points en 35 déplacements)");
+        AfficherLentement("2:Moyen (50 points en 30 déplacements)");
+        AfficherLentement("3:Difficile (50 points en 20 déplacements)");
+        AfficherLentement("4: Record ");// libre
+        AfficherLentement("Appuyer sur le chiffre souhaité:");
         int B= Convert.ToInt32(Console.ReadLine());
         if(B==4)
         {
