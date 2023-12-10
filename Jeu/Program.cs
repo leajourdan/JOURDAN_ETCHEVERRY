@@ -288,22 +288,34 @@ void AfficherLentement(string texte){
     foreach (char c in texte)
     {
         Console.Write(c);
+        Console.Beep(800,200);
         System.Threading.Thread.Sleep(50);
     }
 }
 
 void Main()
 {
-    AfficherLentement("Press A to play. Press R to see the commands");
+    Console.Write('\n');
+    AfficherLentement("Pressez A pour jouer");
+    Console.Write('\n');
+    AfficherLentement("Pressez R pour voir les commandes et les règles ");
+    Console.Write('\n');
     char A = Convert.ToChar(Console.ReadLine());
     if (A=='a')
     {
+        Console.Write("\n");
         AfficherLentement("Choisir le mode de jeu:");
-        AfficherLentement("1:Facile (50 points en 35 déplacements)");
-        AfficherLentement("2:Moyen (50 points en 30 déplacements)");
-        AfficherLentement("3:Difficile (50 points en 20 déplacements)");
+        Console.Write("\n");
+        AfficherLentement("1: Facile (50 points en 35 déplacements)");
+        Console.Write("\n");
+        AfficherLentement("2: Moyen (50 points en 30 déplacements)");
+        Console.Write("\n");
+        AfficherLentement("3: Difficile (50 points en 20 déplacements)");
+        Console.Write("\n");
         AfficherLentement("4: Record ");// libre
+        Console.Write("\n");
         AfficherLentement("Appuyer sur le chiffre souhaité:");
+        Console.Write('\n');
         int B= Convert.ToInt32(Console.ReadLine());
         if(B==4)
         {
@@ -311,8 +323,9 @@ void Main()
             //Read the first line of text
             int meilleurScore= Convert.ToInt32(sr.ReadLine());
             sr.Close();
-            Console.WriteLine($"Record à battre: {meilleurScore} points");
-            Console.WriteLine("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+            AfficherLentement($"Record à battre: {meilleurScore} points");
+            AfficherLentement("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+            Console.Write('\n');
             n= Convert.ToInt32(Console.ReadLine()!);
             int [][] tableauFinal= new int [n][];
             InitTableauZeros(tableauFinal);
@@ -323,7 +336,7 @@ void Main()
             int scoreFinal=0;
             while(partieEnCours==1)
             {
-                Console.WriteLine ($"Score={Score(tableauFinal)}");
+                Console.WriteLine($"Score={Score(tableauFinal)}");
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
                 Mouvement(tableauFinal,direction);
@@ -335,22 +348,23 @@ void Main()
                 if (Lignes(tableauFinal)==-1)
                     partieEnCours=0;
             }
-        
-            Console.WriteLine ($"Votre score est de {scoreFinal} points.");
-            
+            Console.Write('\n');
+            AfficherLentement ($"Votre score est de {scoreFinal} points.");
             if (scoreFinal>meilleurScore)
             {
                 meilleurScore=scoreFinal;
                 StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
                 //Write a line of text
                 sw.WriteLine(Score(tableauFinal));
-                Console.WriteLine("Bravo, vous avez battu un nouveau record!");
+                Console.Write('\n');
+                AfficherLentement("Bravo, vous avez battu un nouveau record!");
                 sw.Close();
             }
             
             else 
             {
-                Console.WriteLine($"Le meilleur score est de {meilleurScore} points.");
+                Console.Write('\n');
+                AfficherLentement($"Le meilleur score est de {meilleurScore} points.");
             
             }
         }
@@ -392,13 +406,16 @@ void Main()
             }
             if ( scoreFinal<50)
             {
-                Console.WriteLine($"DOMMAGE.   Tu as atteint {scoreFinal} points en {compteurTour} déplacements...");
-                Console.WriteLine("Réessaie :)");
+                Console.Write('\n');
+                AfficherLentement($"DOMMAGE.   Tu as atteint {scoreFinal} points en {compteurTour} déplacements...");
+                Console.Write('\n');
+                AfficherLentement("Réessaie :)");
 
             }
             else 
             {
-                Console.WriteLine($"Félicitations ! Tu as atteint {scoreFinal} points en {compteurTour} déplacements! :)");
+                Console.Write('\n');
+                AfficherLentement($"Félicitations ! Tu as atteint {scoreFinal} points en {compteurTour} déplacements! :)");
             }
         }
     }
@@ -406,40 +423,45 @@ void Main()
     {
         if(A=='r')
         {
-            Console.WriteLine("Appuyer sur z pour swiper vers le haut");
-            Console.WriteLine("Appuyer sur s pour swiper vers le bas");
-            Console.WriteLine("Appuyer sur d pour swiper vers la droite");
-            Console.WriteLine("Appuyer sur q pour swiper vers la gauche");            
             Console.Write("\n");
-
-            Console.WriteLine("Attention: dès que le tableau est plein vous avez perdu");
+            AfficherLentement("COMMANDES:");
+            AfficherLentement("Appuyer sur z pour swiper vers le haut");
             Console.Write("\n");
-            Console.WriteLine("Valeur des items:");
-            Console.Write("Le bonbon ");
+            AfficherLentement("Appuyer sur s pour swiper vers le bas");
+            Console.Write("\n");
+            AfficherLentement("Appuyer sur d pour swiper vers la droite");
+            Console.Write("\n");
+            AfficherLentement("Appuyer sur q pour swiper vers la gauche");            
+            Console.Write("\n");
+            Console.Write('\n');
+            AfficherLentement("VALEUR DES ITEMS:");
+            Console.Write("\n");
+            AfficherLentement("Le bonbon ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("¤ ");
+            AfficherLentement("¤ ");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write(": 1 point");
+            AfficherLentement(": 1 point");
             Console.Write("\n");
-            Console.Write("Le rouleau de réglisse ");
+            AfficherLentement("Le rouleau de réglisse ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("@ ");
+            AfficherLentement("@ ");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write(": 3 points");
+            AfficherLentement(": 3 points");
             Console.Write("\n");
-            Console.Write("Le donut ");
+            AfficherLentement("Le donut ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("o ");
+            AfficherLentement("o ");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write(": 7 points");
+            AfficherLentement(": 7 points");
             Console.Write("\n");
-            Console.Write("Le sucre d'orge ");
+            AfficherLentement("Le sucre d'orge ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("J ");
+            AfficherLentement("J ");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write(": 15 points");
+            AfficherLentement(": 15 points");
             Console.Write("\n");
-
+            Console.Write("\n");
+            AfficherLentement("Attention: dès que le tableau est plein vous avez perdu");
         }
     }
 }
