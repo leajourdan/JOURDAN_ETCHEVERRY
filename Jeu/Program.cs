@@ -288,8 +288,7 @@ void AfficherLentement(string texte){
     foreach (char c in texte)
     {
         Console.Write(c);
-        Console.Beep(800,200);
-        System.Threading.Thread.Sleep(50);
+        System.Threading.Thread.Sleep(30);
     }
 }
 
