@@ -313,7 +313,7 @@ void Main()
         Console.Write("\n");
         AfficherLentement("4: Record ");// libre
         Console.Write("\n");
-        AfficherLentement("Appuyer sur le chiffre souhaité:");
+        AfficherLentement("Saisir le chiffre souhaité:");
         Console.Write('\n');
         int B= Convert.ToInt32(Console.ReadLine());
         if(B==4)
@@ -323,7 +323,8 @@ void Main()
             int meilleurScore= Convert.ToInt32(sr.ReadLine());
             sr.Close();
             AfficherLentement($"Record à battre: {meilleurScore} points");
-            AfficherLentement("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+            Console.Write('\n');
+            AfficherLentement("Choisir la taille du tableau: exemple 3 pour 3x3");
             Console.Write('\n');
             n= Convert.ToInt32(Console.ReadLine()!);
             int [][] tableauFinal= new int [n][];
@@ -339,7 +340,6 @@ void Main()
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
                 Mouvement(tableauFinal,direction);
-                Lignes(tableauFinal);
                 ApresTour(tableauFinal);
                 AfficherTableau(tableauFinal);
                 Score(tableauFinal);
@@ -353,7 +353,6 @@ void Main()
             {
                 meilleurScore=scoreFinal;
                 StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
-                //Write a line of text
                 sw.WriteLine(Score(tableauFinal));
                 Console.Write('\n');
                 AfficherLentement("Bravo, vous avez battu un nouveau record!");
@@ -393,7 +392,6 @@ void Main()
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
                 Mouvement(tableauFinal,direction);
-                Lignes(tableauFinal);
                 ApresTour(tableauFinal);
                 AfficherTableau(tableauFinal);
                 Score(tableauFinal);
