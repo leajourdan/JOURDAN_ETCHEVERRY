@@ -324,11 +324,7 @@ void Main()
             sr.Close();
             AfficherLentement($"Record à battre: {meilleurScore} points");
             Console.Write('\n');
-<<<<<<< HEAD
-            AfficherLentement("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
-=======
             AfficherLentement("Choisir la taille du tableau: exemple 3 pour 3x3");
->>>>>>> e31e57be8d91c8aefbe746dd3845626dde4b6358
             Console.Write('\n');
             n= Convert.ToInt32(Console.ReadLine()!);
             int [][] tableauFinal= new int [n][];
