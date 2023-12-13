@@ -7,7 +7,7 @@ int n=0;
 int partieEnCours=1;
 
 
-int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
+int CompterZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un tableau 1D
 {
     int count = 0;
     for(int i=0;i<tableau.Length;i++)
@@ -21,7 +21,7 @@ int CountZeros(int[] tableau) // Fonction qui compte le nombre de zeros dans un 
 }
 
 
-int Lignes(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenant au moins 1 case vide 
+int TrouverLigne(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenant au moins 1 case vide 
 {
     Random indice= new Random();
     int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue de chercher
@@ -29,7 +29,7 @@ int Lignes(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenan
     while (trouve==0 & k<100*n) // explication du k:  si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre certain de trouver une case vide. 
     {    
         int a=indice.Next(0,n);
-        if(CountZeros(tableauJeu[a])!=0)
+        if(CompterZeros(tableauJeu[a])!=0)
         {
             trouve=1;
             return a;
@@ -44,9 +44,9 @@ int Lignes(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenan
 }   
 
 
-int [][] ApresTour(int[][] tableauJeu) // fonction rajoutant 1 bonbon dans une case aléatoire vide
+int [][] AjouterBonbon(int[][] tableauJeu) // fonction rajoutant 1 bonbon dans une case aléatoire vide
 {    
-    int indice=Lignes(tableauJeu); // on a deja choisi sur quelle ligne serait le bonbon, choisissons  à présent la colonne
+    int indice=TrouverLigne(tableauJeu); // on a deja choisi sur quelle ligne serait le bonbon, choisissons  à présent la colonne
     Random aleatoire= new Random();
     int nb= aleatoire.Next(0,n);
     if (indice==-1)
@@ -101,7 +101,7 @@ void AfficherItem(int numero)
 }
 
 
-int Score(int [][] tableauJeu) //fonction calculant le score
+int CalculerScore(int [][] tableauJeu) //fonction calculant le score
 {    
     int score=0;
     for (int i=0; i<n; i++) // On parcourt les cases une à une en ajoutant à chaque fois au score la valeur des bonbons correspondante
@@ -145,7 +145,7 @@ void AfficherTableau(int[][] tableauJeu) // Fonction s'occupant de la mise en fo
 }   
  
 
-int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant les déplacements et fusions des bonbons
+int [][] Swiper (int [][] tableauJeu, char direction) // fonction réalisant les déplacements et fusions des bonbons
 // rappel: un seul mouvement possible par tour
 {   
     if (direction == 'z') // en voulant tout swiper vers le haut
@@ -153,7 +153,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
         for (int i=0; i<n ; i++) //on parcourt les colonnes
         {    
             int fusion=0; // variable vérifiant qu'une seule fusion est effectuée par colonne par tour
-            for (int j=1; j<n;j++) // boucle permettant de parcourir toutes les cases de la colonne (on parcourt les lignes)
+            for (int j=1; j<n;j++) // boucle permettant de parcourir toutes les cases de la colonne (on parcourt les TrouverLigne)
             {
                 int k=0; //variable permettant l'incrémentation de la case observée
                 while ( j-1-k>=0 && tableauJeu[j-1-k][i]==0) // tant que la case observée n'est pas celle tout en haut du tableau et qu'elle est vide
@@ -174,7 +174,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
 
                 }
 
-            }// on passe maintenent à la case suivante de la colonne 
+            }// on passe maintenant à la case suivante de la colonne 
         }// on passe à la colonne suivante
     }
     if (direction == 'q') // en voulant tout swiper vers la gauche
@@ -182,7 +182,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
         for (int i=0; i<n ; i++) // on parcourt les lignes
         {
             int fusion=0; //variable vérifiant qu'une seule fusion est effectuée par colonne par tour
-            for (int j=1;j<n;j++)// on parcourt les cases sur une meme lignes (on parcourt les colonnes)
+            for (int j=1;j<n;j++)// on parcourt les cases sur une meme TrouverLigne (on parcourt les colonnes)
             {    
                 int k=0;
                 while( j-1-k>=0 &&tableauJeu[i][j-1-k]==0 )
@@ -260,7 +260,7 @@ int [][] Mouvement (int [][] tableauJeu, char direction) // fonction réalisant 
                      /*if (tableauJeu[j+1+k][i]+tableauJeu[j+k][i] == 5){
                         Console.WriteLine("impossible, swipe autrement");
                         char u=Convert.ToChar(Console.ReadLine()!);
-                        Mouvement(tableauFinal,u);
+                        Swiper(tableauFinal,u);
                     }*/
                 }
             }
@@ -292,7 +292,7 @@ void AfficherLentement(string texte){
     }
 }
 
-void Main()
+void LancerPartie()
 {
     Console.Write('\n');
     AfficherLentement("Pressez A pour jouer");
@@ -329,22 +329,20 @@ void Main()
             n= Convert.ToInt32(Console.ReadLine()!);
             int [][] tableauFinal= new int [n][];
             InitTableauZeros(tableauFinal);
-            ApresTour(tableauFinal);
-            ApresTour(tableauFinal);
+            AjouterBonbon(tableauFinal);
+            AjouterBonbon(tableauFinal);
             AfficherTableau(tableauFinal);
-            Score(tableauFinal);
             int scoreFinal=0;
             while(partieEnCours==1)
             {
-                Console.WriteLine($"Score={Score(tableauFinal)}");
+                Console.WriteLine($"Score={CalculerScore(tableauFinal)}");
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
-                Mouvement(tableauFinal,direction);
-                ApresTour(tableauFinal);
+                Swiper(tableauFinal,direction);
+                AjouterBonbon(tableauFinal);
                 AfficherTableau(tableauFinal);
-                Score(tableauFinal);
-                scoreFinal=Score(tableauFinal);
-                if (Lignes(tableauFinal)==-1)
+                scoreFinal=CalculerScore(tableauFinal);
+                if (TrouverLigne(tableauFinal)==-1)
                     partieEnCours=0;
             }
             Console.Write('\n');
@@ -353,7 +351,7 @@ void Main()
             {
                 meilleurScore=scoreFinal;
                 StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
-                sw.WriteLine(Score(tableauFinal));
+                sw.WriteLine(CalculerScore(tableauFinal));
                 Console.Write('\n');
                 AfficherLentement("Bravo, vous avez battu un nouveau record!");
                 sw.Close();
@@ -379,25 +377,23 @@ void Main()
             n=3;
             int [][] tableauFinal= new int [n][];
             InitTableauZeros(tableauFinal);
-            ApresTour(tableauFinal);
-            ApresTour(tableauFinal);
+            AjouterBonbon(tableauFinal);
+            AjouterBonbon(tableauFinal);
             AfficherTableau(tableauFinal);
-            Score(tableauFinal);
             int scoreFinal=0;
             while(partieEnCours==1 && compteurTour<= tour && scoreFinal< 50)
             {
 
-                Console.WriteLine ($"Score={Score(tableauFinal)}");
+                Console.WriteLine ($"Score={CalculerScore(tableauFinal)}");
                 Console.WriteLine($"Nombre de déplacements restants: {tour-compteurTour} ");
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
-                Mouvement(tableauFinal,direction);
-                ApresTour(tableauFinal);
+                Swiper(tableauFinal,direction);
+                AjouterBonbon(tableauFinal);
                 AfficherTableau(tableauFinal);
-                Score(tableauFinal);
-                scoreFinal=Score(tableauFinal);
+                scoreFinal=CalculerScore(tableauFinal);
                 compteurTour++;
-                if (Lignes(tableauFinal)==-1)
+                if (TrouverLigne(tableauFinal)==-1)
                     partieEnCours=0;
                 
             }
@@ -464,8 +460,3 @@ void Main()
     }
 }
 
-
-Main();
-// efets sonores
-// rapport
-// matrice
