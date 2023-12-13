@@ -26,7 +26,7 @@ int Lignes(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenan
     Random indice= new Random();
     int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue de chercher
     int k=0; 
-    while (trouve==0 & k<100*n) // explication du k:  si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre sûr. 
+    while (trouve==0 & k<100*n) // explication du k:  si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre certain de trouver une case vide. 
     {    
         int a=indice.Next(0,n);
         if(CountZeros(tableauJeu[a])!=0)
@@ -104,7 +104,7 @@ void AfficherItem(int numero)
 int Score(int [][] tableauJeu) //fonction calculant le score
 {    
     int score=0;
-    for (int i=0; i<n; i++) // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
+    for (int i=0; i<n; i++) // On parcourt les cases une à une en ajoutant à chaque fois au score la valeur des bonbons correspondante
     {
         for (int j=0; j<n; j++)
         {
