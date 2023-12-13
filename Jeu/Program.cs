@@ -26,7 +26,7 @@ int Lignes(int [][] tableauJeu) //fonction trouvant une ligne au hasard contenan
     Random indice= new Random();
     int trouve=0; //condition d'arret pour la boucle while: tant qu'une ligne n'est pas trouvée, le prg continue de chercher
     int k=0; 
-    while (trouve==0 & k<100*n) // explication du k:  si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre sûr. 
+    while (trouve==0 & k<100*n) // explication du k:  si le random ne trouve pas la case vide en n tentatives, le jeu s'arrete donc on augemnte le nombre de chiffre aleatoire generés pour etre certain de trouver une case vide. 
     {    
         int a=indice.Next(0,n);
         if(CountZeros(tableauJeu[a])!=0)
@@ -104,7 +104,7 @@ void AfficherItem(int numero)
 int Score(int [][] tableauJeu) //fonction calculant le score
 {    
     int score=0;
-    for (int i=0; i<n; i++) // On parcours les cases une à une en ajoutant a chaque fois au score la valeur des bonbons correspondante
+    for (int i=0; i<n; i++) // On parcourt les cases une à une en ajoutant à chaque fois au score la valeur des bonbons correspondante
     {
         for (int j=0; j<n; j++)
         {
@@ -313,7 +313,7 @@ void Main()
         Console.Write("\n");
         AfficherLentement("4: Record ");// libre
         Console.Write("\n");
-        AfficherLentement("Appuyer sur le chiffre souhaité:");
+        AfficherLentement("Saisir le chiffre souhaité:");
         Console.Write('\n');
         int B= Convert.ToInt32(Console.ReadLine());
         if(B==4)
@@ -324,7 +324,11 @@ void Main()
             sr.Close();
             AfficherLentement($"Record à battre: {meilleurScore} points");
             Console.Write('\n');
+<<<<<<< HEAD
             AfficherLentement("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
+=======
+            AfficherLentement("Choisir la taille du tableau: exemple 3 pour 3x3");
+>>>>>>> e31e57be8d91c8aefbe746dd3845626dde4b6358
             Console.Write('\n');
             n= Convert.ToInt32(Console.ReadLine()!);
             int [][] tableauFinal= new int [n][];
@@ -340,7 +344,6 @@ void Main()
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
                 Mouvement(tableauFinal,direction);
-                Lignes(tableauFinal);
                 ApresTour(tableauFinal);
                 AfficherTableau(tableauFinal);
                 Score(tableauFinal);
@@ -354,7 +357,6 @@ void Main()
             {
                 meilleurScore=scoreFinal;
                 StreamWriter sw = new StreamWriter(new FileStream("Score.txt",FileMode.Create));
-                //Write a line of text
                 sw.WriteLine(Score(tableauFinal));
                 Console.Write('\n');
                 AfficherLentement("Bravo, vous avez battu un nouveau record!");
@@ -394,7 +396,6 @@ void Main()
                 Console.WriteLine("Swiper dans une direction");
                 char direction=Convert.ToChar(Console.ReadLine()!);
                 Mouvement(tableauFinal,direction);
-                Lignes(tableauFinal);
                 ApresTour(tableauFinal);
                 AfficherTableau(tableauFinal);
                 Score(tableauFinal);
