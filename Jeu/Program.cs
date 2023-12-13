@@ -323,6 +323,7 @@ void Main()
             int meilleurScore= Convert.ToInt32(sr.ReadLine());
             sr.Close();
             AfficherLentement($"Record à battre: {meilleurScore} points");
+            Console.Write('\n');
             AfficherLentement("Choisir la taille du tableau: saisissez la longeur du coté exemple: 3 pour 3x3");
             Console.Write('\n');
             n= Convert.ToInt32(Console.ReadLine()!);
@@ -406,7 +407,7 @@ void Main()
             if ( scoreFinal<50)
             {
                 Console.Write('\n');
-                AfficherLentement($"DOMMAGE.   Tu as atteint {scoreFinal} points en {compteurTour} déplacements...");
+                AfficherLentement($"DOMMAGE... Tu as atteint {scoreFinal} points en {compteurTour} déplacements...");
                 Console.Write('\n');
                 AfficherLentement("Réessaie :)");
 
@@ -424,6 +425,7 @@ void Main()
         {
             Console.Write("\n");
             AfficherLentement("COMMANDES:");
+            Console.Write('\n');
             AfficherLentement("Appuyer sur z pour swiper vers le haut");
             Console.Write("\n");
             AfficherLentement("Appuyer sur s pour swiper vers le bas");
