@@ -94,10 +94,7 @@ void AfficherItem(int numero)
         Console.Write(" J "); //  la case est remplie avec un sucre d'orge si elle vaut 4
         Console.ForegroundColor = ConsoleColor.Gray;
     }
-    /*if (numero==5){
-        Console.WriteLine("Victoire");
-        partieEnCours=0;
-    }*/
+
 }
 
 
@@ -257,11 +254,6 @@ int [][] Swiper (int [][] tableauJeu, char direction) // fonction réalisant les
                         fusion=1;
                         tableauJeu[j+k][i]=0;
                     }
-                     /*if (tableauJeu[j+1+k][i]+tableauJeu[j+k][i] == 5){
-                        Console.WriteLine("impossible, swipe autrement");
-                        char u=Convert.ToChar(Console.ReadLine()!);
-                        Swiper(tableauFinal,u);
-                    }*/
                 }
             }
         }
